@@ -1,16 +1,19 @@
+import distribute_setup
+from setuptools import setup, find_packages
+import sys
 import os
-from distutils.core import setup
+extra = {}
+if sys.version_info >= (3,):
+    extra['use_2to3'] = True
 
 setup(
     name="rython",
     packages=["rython"],
-    version="0.0.1",
+    version="0.0.2",
     license="BSD",
     author="Matt Pizzimenti",
     author_email="mjpizz+rython@gmail.com",
     url="http://pypi.python.org/pypi/rython/",
-    # install_requires=[],
-    # install_recommends=["PyYAML"],
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Programming Language :: Python",
@@ -25,7 +28,5 @@ setup(
     ],
     description="rython transparently mixes Ruby code into Python",
     long_description=open(os.path.join(os.path.dirname(__file__), "README.txt")).read(),
-    # zip_safe=False,
-    # cmdclass=cmdclass,
-    # ext_modules=ext_modules,
+    **extra
     )
